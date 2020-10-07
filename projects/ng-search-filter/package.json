@@ -1,0 +1,29 @@
+{
+  "name": "ng-search-filter",
+  "description": "Angular filter to make custom search",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "keywords": [
+    "search",
+    "filter",
+    "ng2",
+    "angular",
+    "pipe"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismetkizgin/ng-search-filter.git"
+  },
+  "author": "İsmet Kizgin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ismetkizgin/ng-search-filter/issues"
+  },
+  "homepage": "https://github.com/ismetkizgin/ng-search-filter#readme"
+}
