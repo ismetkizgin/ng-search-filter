@@ -1,7 +1,7 @@
 {
   "name": "ng-search-filter",
   "description": "Angular filter to make custom search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^10.0.14",
     "@angular/core": "^10.0.14"

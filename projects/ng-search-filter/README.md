@@ -1,24 +1,64 @@
-# NgSearchFilter
+# Angular Search Filter Pipe
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name --project ng-search-filter` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-search-filter`.
-> Note: Don't forget to add `--project ng-search-filter` or else it will be added to the default project in your `angular.json` file. 
+```
+npm i ng-search-filter --save
+```
+```
+yarn add ng-search-filter 
+```
+## Usage
 
-## Build
+Import `NgSearchFilterModule` to your module
 
-Run `ng build ng-search-filter` to build the project. The build artifacts will be stored in the `dist/` directory.
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule  } from '@angular/platform-browser';
+import { AppComponent } from './app';
 
-## Publishing
+import { NgSearchFilterModule } from 'ng-search-filter';
 
-After building your library with `ng build ng-search-filter`, go to the dist folder `cd dist/ng-search-filter` and run `npm publish`.
+@NgModule({
+  imports: [BrowserModule, NgSearchFilterModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
 
-## Running unit tests
+And use pipe in your component after declaring and initializing it in your component:
 
-Run `ng test ng-search-filter` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { Component } from '@angular/core';
 
-## Further help
+@Component({
+  selector: 'example-app',
+  template: `
+    <div>
+        <input type="text" [(ngModel)]="searchText">
+        <div *ngFor = "let item of items |filter:searchText" >
+          <p>
+            {{item.name}}
+          </p>
+        </div>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    </div>  
+  `
+})
+
+export class AppComponent {
+  items: string[] = [{ name: "archie" }, { name: "jake" }, { name: "richard" }];
+  searchText = '';
+}
+```
+
+## Support ng-search-filter
+
+ng-search-filter is completely free and open-source. If you find it useful, you can show your support by 🌟 it or sharing it in your social network.
+
+
+## License
+
+[Apache](LICENSE)
