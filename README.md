@@ -1,27 +1,64 @@
-# NgSearchFilter
+# Angular Search Filter Pipe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
-## Development server
+## Install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+npm i ng-search-filter --save
+```
+```
+yarn add ng-search-filter 
+```
+## Usage
 
-## Code scaffolding
+Import `NgSearchFilterModule` to your module
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule  } from '@angular/platform-browser';
+import { AppComponent } from './app';
 
-## Build
+import { NgSearchFilterModule } from 'ng-search-filter';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+@NgModule({
+  imports: [BrowserModule, NgSearchFilterModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
 
-## Running unit tests
+And use pipe in your component after declaring and initializing it in your component:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { Component } from '@angular/core';
 
-## Running end-to-end tests
+@Component({
+  selector: 'example-app',
+  template: `
+    <div>
+        <input type="text" [(ngModel)]="searchText">
+        <div *ngFor = "let item of items |filter:searchText" >
+          <p>
+            {{item.name}}
+          </p>
+        </div>
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    </div>  
+  `
+})
 
-## Further help
+export class AppComponent {
+  items: string[] = [{ name: "archie" }, { name: "jake" }, { name: "richard" }];
+  searchText = '';
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Support ng-search-filter
+
+ng-search-filter is completely free and open-source. If you find it useful, you can show your support by 🌟 it or sharing it in your social network.
+
+
+## License
+
+[Apache](LICENSE)
