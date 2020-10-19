@@ -33,6 +33,8 @@ And use pipe in your component after declaring and initializing it in your compo
 ```typescript
 import { Component } from '@angular/core';
 
+import { NgSearchFilterService } from 'ng-search-filter';
+
 @Component({
   selector: 'example-app',
   template: `
@@ -49,6 +51,11 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  constructor(private _ngSearchFilterService: NgSearchFilterService) { }
+  // The package uses Turkish as the default language support. 
+  // This way you can change the language support.
+  this._ngSearchFilterService.setDefaultLang('en');
+  
   items: string[] = [{ name: "archie" }, { name: "jake" }, { name: "richard" }];
   searchText = '';
 }
