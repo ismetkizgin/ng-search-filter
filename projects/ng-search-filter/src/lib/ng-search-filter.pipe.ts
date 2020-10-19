@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
+import { NgSearchFilterService } from './ng-search-filter.service';
 
 @Pipe({
   name: 'filter',
@@ -6,6 +7,8 @@ import { Pipe, PipeTransform, Injectable } from '@angular/core';
 })
 @Injectable()
 export class NgSearchFilterPipe implements PipeTransform {
+  constructor(private _ngSearchFilterService: NgSearchFilterService) {}
+  private _lang = this._ngSearchFilterService.getDefaultLang();
   /**
    * @param items object from array
    * @param term term's search
@@ -14,7 +17,7 @@ export class NgSearchFilterPipe implements PipeTransform {
   transform(items: any, term: string, excludes: any = []): any {
     if (!term || !items) return items;
 
-    return NgSearchFilterPipe.filter(items, term, excludes);
+    return NgSearchFilterPipe.filter(items, term, excludes, this._lang);
   }
 
   /**
@@ -27,14 +30,15 @@ export class NgSearchFilterPipe implements PipeTransform {
   static filter(
     items: Array<{ [key: string]: any }>,
     term: string,
-    excludes: any
+    excludes: any,
+    lang: string
   ): Array<{ [key: string]: any }> {
-    const toCompare = term.toLocaleLowerCase('tr');
+    const toCompare = term.toLocaleLowerCase(lang);
 
     function checkInside(item: any, term: string) {
       if (
         typeof item === 'string' &&
-        item.toString().toLocaleLowerCase('tr').includes(toCompare)
+        item.toString().toLocaleLowerCase(lang).includes(toCompare)
       ) {
         return true;
       }
@@ -52,7 +56,7 @@ export class NgSearchFilterPipe implements PipeTransform {
             return true;
           }
         } else if (
-          item[property].toString().toLocaleLowerCase('tr').includes(toCompare)
+          item[property].toString().toLocaleLowerCase(lang).includes(toCompare)
         ) {
           return true;
         }
