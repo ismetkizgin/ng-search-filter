@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.1.0 (2020-10-19)
+
+
+### Features
+
+* added language support ([a9b86de](https://github.com/ismetkizgin/ng-search-filter/commit/a9b86debe84b25ecfddec1cb64f6f89ff4ada4dc))
+
+
 ## 1.0.0 (2020-10-07)
 
 
